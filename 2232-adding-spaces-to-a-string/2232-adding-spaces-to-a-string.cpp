@@ -18,5 +18,7 @@ public:
             i++;
         }
         return ans;
+
+        //we can do optimizaton of space with reducing number of variable 
     }
 };
