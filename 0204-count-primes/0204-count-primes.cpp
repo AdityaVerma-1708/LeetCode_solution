@@ -19,7 +19,7 @@ public:
     //     }
     //     return count;
 
-//approch 2: Seive of Eratosthenes Algorithm
+//approch 2: Seive of Eratosthenes Algorithm **vvvIMP
     int countPrimes(int n){
         int count = 0;
         vector<bool> prime(n+1,true); //array of size n+1 with all marked as true
