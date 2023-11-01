@@ -32,12 +32,15 @@ public:
         // }
         // return -1;
 
-    //approch 2: by using the member function
-        size_t temp = haystack.find(needle);
-        if(temp == string::npos){
+    //approch 2: by using the find function ()
+        int temp = haystack.find(needle);
+        if(temp > haystack.size()){
             return -1;
         }
         return temp;
+
+    //approch 3:
+
 
     }
 };
