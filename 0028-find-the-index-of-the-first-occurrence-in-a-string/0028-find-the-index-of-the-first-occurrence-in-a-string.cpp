@@ -33,14 +33,37 @@ public:
         // return -1;
 
     //approch 2: by using the find function ()
-        int temp = haystack.find(needle);
-        if(temp > haystack.size()){
-            return -1;
-        }
-        return temp;
+        // int temp = haystack.find(needle);
+        // if(temp > haystack.size()){
+        //     return -1;
+        // }
+        // return temp;
 
     //approch 3:
-
+        if(haystack.size() < needle.size()){
+            return -1;
+        }
+        else if(haystack.size() == needle.size()){
+            if(needle == haystack){
+                return 0;
+            }
+            else{
+                return -1;
+            }
+        }
+        else{
+            int i=0;
+            while(i<haystack.size()){
+                if(haystack[i] == needle[0]){
+                    string str = haystack.substr(i,needle.size());
+                    if(str == needle){
+                        return i;
+                    }
+                }
+                i++;
+            }
+        }
+        return -1;
 
     }
 };
