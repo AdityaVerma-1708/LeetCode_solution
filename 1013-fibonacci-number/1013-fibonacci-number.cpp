@@ -1,6 +1,7 @@
 class Solution {
 public:
     int fib(int n) {
+    //appoch 1: brute force (recurssion)    
         if(n==0){
             return 0;
         }
