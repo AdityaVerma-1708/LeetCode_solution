@@ -24,6 +24,7 @@ public:
                 if(temp->val == temp->next->val){
                     ListNode* temp2 = temp->next;
                     temp->next = temp2->next;
+                    delete(temp2);
                 }
                 else{
                     temp = temp->next;
