@@ -34,4 +34,12 @@ public:
         solve(ans,temp,s,0);
         return ans;
     }
+
+    //this question taught us alot 
+    /* see there are two things first if we pass the reference of temp, then we need to add 
+    pop statement in the digit waali if statementm, and in case of pass by value we dont need 
+    to add pop statement 
+
+    and for else block irrespective of reference we need to keep the pop statement since in that
+    block or in that recurrsive call we pushed the char that we need to pop
 };
