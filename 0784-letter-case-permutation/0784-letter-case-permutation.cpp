@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    void solve(vector<string> &ans,string temp,string s,int i){
+    void solve(vector<string> &ans,string &temp,string s,int i){
         if(i >= s.size()){
             ans.push_back(temp);
             return ;
@@ -11,7 +11,7 @@ public:
             temp.push_back(s[i]);
             solve(ans,temp,s,i+1);
 
-            // temp.pop_back();
+            temp.pop_back();
         }
         else{
             //uppercase
