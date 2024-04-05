@@ -6,7 +6,6 @@ public:
             return ;
         }
         temp = ans;
-
         ans.erase();
 
         int i = 0;
