@@ -22,6 +22,32 @@ public:
         // return ans;
 
     //approach 2:
+        // int i = 0;
+        // int j = 0;
+        // int ans = 0;
+        // int maxf = 0;
+        // int map[26] = {0};
+        // while(j<s.size()){
+        //     map[s[j] - 'A']++;
+        //     maxf = max(maxf,map[s[j] - 'A']);
+
+        //     while((j-i+1) - maxf > k){
+        //         map[s[i]- 'A']--;
+        //         maxf = 0;
+        //         for(int a = 0;a<26;a++){
+        //             maxf = max(maxf,map[a]);
+        //         }
+        //         i++;
+        //     }
+
+        //     if((j-i+1) - maxf <= k){
+        //         ans = max(ans,j-i+1);
+        //     }
+        //     j++;
+        // }
+        // return ans;
+
+    //approach 2: we dont need to find maxf again, bascially or decrementing the  
         int i = 0;
         int j = 0;
         int ans = 0;
@@ -31,12 +57,12 @@ public:
             map[s[j] - 'A']++;
             maxf = max(maxf,map[s[j] - 'A']);
 
-            while((j-i+1) - maxf > k){
+            if((j-i+1) - maxf > k){  //loop ki jagah if se he kaam ho raha hai
                 map[s[i]- 'A']--;
-                maxf = 0;
-                for(int a = 0;a<26;a++){
-                    maxf = max(maxf,map[a]);
-                }
+                // maxf = 0;
+                // for(int a = 0;a<26;a++){
+                //     maxf = max(maxf,map[a]);
+                // }
                 i++;
             }
 
@@ -46,5 +72,6 @@ public:
             j++;
         }
         return ans;
+
     }
 };
