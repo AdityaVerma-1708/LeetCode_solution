@@ -67,21 +67,24 @@ public:
         int j = 0;
         int flag = 0;
         while(j < nums.size()){
+
             if(nums[j] == maxi && flag == 0){
                 count++;
             } 
 
             flag = 0;
+            
             if(count == k){
                 ans = ans + nums.size() - j;
                 flag = 1;
                 if(nums[i] == maxi){
                     count--;
-                    i++;
+                    // i++;
                 }
-                else if(nums[i] != maxi){
-                    i++;
-                }
+                // else if(nums[i] != maxi){
+                //     i++;
+                // }
+                i++;
             }
             else{
                 j++;
