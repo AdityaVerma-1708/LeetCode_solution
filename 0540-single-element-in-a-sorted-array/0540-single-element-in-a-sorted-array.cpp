@@ -54,15 +54,19 @@ public:
                     return nums[mid];
                 }
                 else if (mid % 2 != 0 && nums[mid] == nums[mid+1]){
+                    //making pair as (odd,even) => single ele is present in left part
                     j = mid - 1;
                 }
                 else if(mid % 2 == 0 && nums[mid] == nums[mid-1]){
+                    //making pair as (odd,even) => single ele is present in left part
                     j = mid - 1;
                 }
                 else if(mid % 2 != 0 && nums[mid] == nums[mid-1]){
+                    //making pair as (even,odd) => single ele is present in right part
                     i = mid + 1;
                 }
                 else{
+                    //making pair as (even,odd) => single ele is present in right part
                     i = mid + 1;
                 }
 
