@@ -85,7 +85,7 @@ public:
         // ans = max(ans,j -i);
         // return ans;      
 
-    //approach 4: jugaadd
+    //approach 4: 
         int j = nums.size()-1;
         int i = j - 1;
         int ans = 0;
@@ -101,15 +101,18 @@ public:
                 i = j - 1;
                 postfixdiff = 0;
                 temp = k;
-                if(ans >= nums.size()/2){
+
+                if(ans > j){
                     break;
                 }
+
             }
             else{
                 i--;
             }
         }
         ans = max(ans,j -i);
-        return ans;      
+        return ans;    
+
     }
 };
