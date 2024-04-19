@@ -85,34 +85,54 @@ public:
         // ans = max(ans,j -i);
         // return ans;      
 
-    //approach 4: 
-        int j = nums.size()-1;
-        int i = j - 1;
-        int ans = 0;
-        int postfixdiff = 0;
-        int temp = k;
+    //approach 4:  optimizing above approach little   --> done
+    
+        // int j = nums.size()-1;
+        // int i = j - 1;
+        // int ans = 0;
+        // int postfixdiff = 0;
+        // int temp = k;
+        // sort(nums.begin(),nums.end());
+        // while(i >= 0){
+        //     postfixdiff = postfixdiff + nums[i+1] - nums[i];
+        //     temp = temp - postfixdiff;
+        //     if(temp < 0){
+        //         ans = max(ans,j - i);
+        //         j--;
+        //         i = j - 1;
+        //         postfixdiff = 0;
+        //         temp = k;
+
+        //         if(ans > j){   //wow adding this simply  think why i added this
+        //             break;
+        //         }
+
+        //     }
+        //     else{
+        //         i--;
+        //     }
+        // }
+        // ans = max(ans,j -i);
+        // return ans;    
+
+    //appraoch 5:
+
+        long long  i = 0;
+        long long ans = 0;
+        long long prefixsum = 0;
+
         sort(nums.begin(),nums.end());
-        while(i >= 0){
-            postfixdiff = postfixdiff + nums[i+1] - nums[i];
-            temp = temp - postfixdiff;
-            if(temp < 0){
-                ans = max(ans,j - i);
-                j--;
-                i = j - 1;
-                postfixdiff = 0;
-                temp = k;
 
-                if(ans > j){
-                    break;
-                }
+        for(int j = 0;j<nums.size();j++){
+            prefixsum = prefixsum + nums[j];
 
+            if((nums[j] * (j-i+1)) > prefixsum + k){
+                prefixsum = prefixsum - nums[i];
+                i++;
             }
-            else{
-                i--;
-            }
+
+            ans = max(ans,j-i+1);
         }
-        ans = max(ans,j -i);
         return ans;    
-
     }
 };
