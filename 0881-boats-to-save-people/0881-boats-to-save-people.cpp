@@ -64,7 +64,8 @@ public:
         // }
         // return ans;
 
-    //approach 3:
+    //approach 3:  only two person at a time help to use 2 pointer approach  
+
         sort(people.begin(),people.end());
         int ans = 0;
         int i = 0;
