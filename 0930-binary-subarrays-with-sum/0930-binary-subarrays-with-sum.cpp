@@ -18,8 +18,9 @@ public:
         // }
         // return ans++;
 
-    //approach 2: little optimization    
-    //prefix sum with space 
+
+    //approach 2: little optimization   -> //prefix sum with space    
+    
         // map<int,int> map;
         // int sum = 0;
         // int ans = 0;
@@ -56,7 +57,10 @@ public:
         //     } 
         // }
         // return ans;
-    //appraoch 3: optimized apporoach 2
+
+
+    //approach -> cleaned approach 2
+
         unordered_map<int,int> map;
         int ans = 0;
         int sum = 0;
@@ -82,5 +86,28 @@ public:
             }
         }
         return ans;
+
+    //approach 3: without space;   // wrong for some test cases
+        // int totsum = 0;
+        // int currsum = 0;
+        // int ans = 0;
+        
+        // for(int val : nums){
+        //     totsum = totsum + val;
+        // }
+
+        // for(int val : nums){
+        //     currsum = currsum + val;
+        //     if(currsum == goal){
+        //         ans++;
+        //     }
+
+        //     if(totsum - currsum == goal){
+        //         ans++;
+        //     }
+        // }
+
+        // return ans;
+
     }
 };
