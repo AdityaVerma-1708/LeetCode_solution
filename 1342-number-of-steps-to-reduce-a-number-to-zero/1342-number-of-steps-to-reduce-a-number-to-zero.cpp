@@ -2,10 +2,23 @@ class Solution {
 public:
     int numberOfSteps(int num) {
     //brute force:
+        // int i = 0;
+        // while(num != 0){
+        //     if(num%2 == 0){
+        //         num = num/2;
+        //     }
+        //     else{
+        //         num = num - 1;
+        //     }
+        //     i++;
+        // }
+        // return i;
+
+    //bit manipulation:
         int i = 0;
         while(num != 0){
             if(num%2 == 0){
-                num = num/2;
+                num = num >> 1;
             }
             else{
                 num = num - 1;
@@ -13,5 +26,6 @@ public:
             i++;
         }
         return i;
+
     }
 };
