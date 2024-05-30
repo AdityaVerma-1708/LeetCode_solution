@@ -14,16 +14,27 @@ public:
         // }
         // return 0;
 
-    //appraoch 2:  
-        sort(nums.begin(),nums.end());
-        int i = 1;
-        while(i<nums.size()){
-            if(nums[i] != nums[i-1]){
-                return nums[i-1];
-            }
-            i = i + 3;
+    //appraoch 2: 
+        // sort(nums.begin(),nums.end());
+        // int i = 1;
+        // while(i<nums.size()){
+        //     if(nums[i] != nums[i-1]){
+        //         return nums[i-1];
+        //     }
+        //     i = i + 3;
+        // }
+
+        // return nums[nums.size()-1];
+
+    //approach 3: concept of buckets
+        int ones = 0;
+        int twos = 0;
+        for(int i = 0;i< nums.size();i++){
+            ones = (nums[i] ^ ones) & (~twos);
+            twos = (nums[i] ^ twos) & (~ones);
         }
 
-        return nums[nums.size()-1];
+        return ones;
+
     }
 };
