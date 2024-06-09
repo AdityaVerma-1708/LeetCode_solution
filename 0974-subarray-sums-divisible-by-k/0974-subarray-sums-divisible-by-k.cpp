@@ -56,6 +56,8 @@ public:
             if(rem < 0){
                 rem = rem + k;
             }
+            // cout<<rem<<endl;
+            // cout<<(-12 % 5)<<endl;
             if(map.find(rem) == map.end()){
                 map[rem]++;
             }
