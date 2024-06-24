@@ -78,7 +78,9 @@ public:
         // }
         // return ans;
 
-    //approach 2: maintainig the min heap and max heap
+    //approach 2:  wrong ans for 41/61
+
+        //maintainig the min heap and max heap
         // int i = 0;
         // int j = 0;
 
@@ -107,7 +109,9 @@ public:
         // return ans;
 
     //approach 2:
-        int i = 0, j = 0, ans = 0;
+        int i = 0;
+        int j = 0;
+        int ans = 0;
     
         priority_queue<pair<int, int>> maxHeap;
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> minHeap;
