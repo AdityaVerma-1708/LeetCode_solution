@@ -49,17 +49,41 @@ public:
     // }   
 
 //approach 3: 
+
     bool canJump(vector<int>& nums){
+        // int maxi = 0;
+        // for(int i = 0;i<nums.size()-1;i++){
+            
+        //     if(nums[i] == 0){
+        //         if(maxi > i){
+        //             continue;
+        //         }
+        //         else{
+        //             return false;
+        //         }
+        //     }
+        //     maxi = max(maxi,i+nums[i]);
+        //     if(maxi >= nums.size()-1){
+        //         return true;
+        //     }
+        // }
+
+        // if(maxi < nums.size()-1){
+        //     return false;
+        // }
+        // else{
+        //     return true;
+        // }
+
+        //clean code
+
+        if(nums.size() == 1){
+            return true;
+        }
         int maxi = 0;
         for(int i = 0;i<nums.size()-1;i++){
-            
-            if(nums[i] == 0){
-                if(maxi > i){
-                    continue;
-                }
-                else{
-                    return false;
-                }
+            if(i>maxi){
+                return false;
             }
             maxi = max(maxi,i+nums[i]);
             if(maxi >= nums.size()-1){
@@ -67,11 +91,6 @@ public:
             }
         }
 
-        if(maxi < nums.size()-1){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return false;
     }   
 };
