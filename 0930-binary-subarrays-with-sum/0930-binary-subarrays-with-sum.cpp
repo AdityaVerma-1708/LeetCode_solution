@@ -61,53 +61,60 @@ public:
 
     //approach -> cleaned approach 2
 
-        unordered_map<int,int> map;
-        int ans = 0;
-        int sum = 0;
-        for(int i = 0;i< nums.size();i++){
-            sum = sum + nums[i];
-            map[sum] = map[sum] + 1;
+        // unordered_map<int,int> map;
+        // int ans = 0;
+        // int sum = 0;
+        // for(int i = 0;i< nums.size();i++){
+        //     sum = sum + nums[i];
+        //     map[sum] = map[sum] + 1;
 
-            if(sum >= goal){
-                if(sum == goal){
-                    ans++;
-                }
-                auto itr = map.find(sum - goal);
-                if(sum - goal == sum){  //means goal is 0
-                    if(itr != map.end()){
-                        ans = ans + itr->second - 1;
+        //     if(sum >= goal){
+        //         if(sum == goal){
+        //             ans++;
+        //         }
+        //         auto itr = map.find(sum - goal);
+        //         if(sum - goal == sum){  //means goal is 0
+        //             if(itr != map.end()){
+        //                 ans = ans + itr->second - 1;
+        //             }
+        //         }
+        //         else{
+        //             if(itr != map.end()){
+        //                 ans = ans + itr->second;
+        //             }
+        //         }
+        //     }
+        // }
+        // return ans;
+
+    //practice
+        vector<int> map(nums.size(),0);
+        int sum = 0;
+        int ans = 0;
+        for(int i = 0;i<nums.size();i++){
+            sum = sum + nums[i];
+            map[i] = sum;
+        }
+
+        for(int i = 0;i<map.size();i++){
+            if(map[i] == goal){
+                ans++;
+                for(int j = 0;j<i;j++){
+                    if((map[i] - map[j]) == goal){
+                        ans++;
                     }
                 }
-                else{
-                    if(itr != map.end()){
-                        ans = ans + itr->second;
+            }
+            else if (map[i] > goal){
+                for(int j = 0;j<i;j++){
+                    if((map[i] - map[j]) == goal){
+                        ans++;
                     }
                 }
             }
         }
+
         return ans;
-
-    //approach 3: without space;   // wrong for some test cases
-        // int totsum = 0;
-        // int currsum = 0;
-        // int ans = 0;
-        
-        // for(int val : nums){
-        //     totsum = totsum + val;
-        // }
-
-        // for(int val : nums){
-        //     currsum = currsum + val;
-        //     if(currsum == goal){
-        //         ans++;
-        //     }
-
-        //     if(totsum - currsum == goal){
-        //         ans++;
-        //     }
-        // }
-
-        // return ans;
 
     }
 };
