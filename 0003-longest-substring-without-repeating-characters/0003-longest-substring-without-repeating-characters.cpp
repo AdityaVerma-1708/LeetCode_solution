@@ -102,21 +102,45 @@ public:
         // return ans;
 
     //appraoch 3: using hashing 
-        vector<int> seen(256,-1);
+        // vector<int> seen(256,-1);
+        // int i = 0;
+        // int j = 0;
+        // int ans = 0;
+
+        // while(j<s.size()){
+        //     if(seen[s[j]] != -1){
+        //         // i = seen[s[j]] + 1;  wrong for abba our ans coming 3
+        //         i = max(seen[s[j]] + 1,i);  
+        //     }
+
+        //     seen[s[j]] = j;
+
+        //     ans = max(ans,j - i + 1);
+        //     j++;
+        // }
+        // return ans;
+
+    //practice:
         int i = 0;
         int j = 0;
         int ans = 0;
-
+        
+        map<char,int> map;
         while(j<s.size()){
-            if(seen[s[j]] != -1){
-                i = max(seen[s[j]] + 1,i);
+            if(map.find(s[j]) != map.end()){
+                int index = map[s[j]] + 1;
+                for(int k = i;k<=map[s[j]];k++){
+                    map.erase(s[k]);
+                }
+                i = index;
             }
 
-            seen[s[j]] = j;
+            map[s[j]] = j;
 
-            ans = max(ans,j - i + 1);
-            j++;
+            ans = max(ans,j-i+1);
+            j++; 
         }
+
         return ans;
     }
 };
