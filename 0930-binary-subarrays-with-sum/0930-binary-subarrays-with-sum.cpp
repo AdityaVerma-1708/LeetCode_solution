@@ -1,5 +1,27 @@
 class Solution {
 public:
+    int find(vector<int>& nums,int goal){
+        if(goal < 0){
+            return 0;
+        }
+
+        int sum = 0;
+        int ans = 0;
+        int i = 0;
+        int j = 0;
+        while(j < nums.size()){
+            sum = sum + nums[j];
+
+            while( sum > goal){
+                sum = sum - nums[i];
+                i++;
+            }
+            ans = ans + j - i + 1;
+            j++;
+        }
+        return ans;
+    }
+
     int numSubarraysWithSum(vector<int>& nums, int goal) {
     //appraoch 1: brute force  TLE
         // int ans = 0;
@@ -88,33 +110,40 @@ public:
         // return ans;
 
     //practice
-        vector<int> map(nums.size(),0);
-        int sum = 0;
-        int ans = 0;
-        for(int i = 0;i<nums.size();i++){
-            sum = sum + nums[i];
-            map[i] = sum;
-        }
+        // vector<int> map(nums.size(),0);
+        // int sum = 0;
+        // int ans = 0;
+        // for(int i = 0;i<nums.size();i++){
+        //     sum = sum + nums[i];
+        //     map[i] = sum;
+        // }
 
-        for(int i = 0;i<map.size();i++){
-            if(map[i] == goal){
-                ans++;
-                for(int j = 0;j<i;j++){
-                    if((map[i] - map[j]) == goal){
-                        ans++;
-                    }
-                }
-            }
-            else if (map[i] > goal){
-                for(int j = 0;j<i;j++){
-                    if((map[i] - map[j]) == goal){
-                        ans++;
-                    }
-                }
-            }
-        }
+        // for(int i = 0;i<map.size();i++){
+        //     if(map[i] == goal){
+        //         ans++;
+        //         for(int j = 0;j<i;j++){
+        //             if((map[i] - map[j]) == goal){
+        //                 ans++;
+        //             }
+        //         }
+        //     }
+        //     else if (map[i] > goal){
+        //         for(int j = 0;j<i;j++){
+        //             if((map[i] - map[j]) == goal){
+        //                 ans++;
+        //             }
+        //         }
+        //     }
+        // }
 
-        return ans;
+        // return ans;
 
+    //practice: 
+        //find subarray <= gaol
+        //find subarray <= goal-1
+        //subtract both 
+
+        return find(nums,goal) - find(nums,goal-1);
+        
     }
 };
