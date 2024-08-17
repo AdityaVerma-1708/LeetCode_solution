@@ -102,7 +102,7 @@ public:
         vector<int> ans;
         deque<int> dq;//storing the indices
         for(int i = 0;i<nums.size();i++){
-            while(!dq.empty() && dq.front() == i-k){
+            while(!dq.empty() && dq.front() <= i-k){
                 dq.pop_front();
             }
 
