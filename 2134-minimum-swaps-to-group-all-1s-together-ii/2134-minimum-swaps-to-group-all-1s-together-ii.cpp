@@ -3,45 +3,40 @@ public:
     int minSwaps(vector<int>& nums) {
     //brute force:
         int tot1 = 0;
-        for(int i = 0;i<nums.size();i++){
+        int size = nums.size();
+        int ans = INT_MAX;
+        for(int i = 0;i<size;i++){
             if(nums[i] == 1){
                 tot1++;
             }
         }
-
-        if(nums.size() == 1){
-            return 0;
+       
+        for(int i = 0;i<size;i++){
+            nums.push_back(nums[i]);
         }
 
-        //find longest window
         int i = 0;
         int j = 0;
-        int count = 0;
-        int length = 0;
-        int maxi = 0;
-        while(count <= nums.size()){
-            if(nums[j] == 1){
-                if(j == nums.size()-1){
-                    j = 0;
+        int zero = 0;
+        while(j < nums.size()){
+            if(j - i + 1 <= tot1){
+                if(nums[j] == 0){
+                    zero++;
                 }
-                else{
-                    j++;
-                }
-                length++;
-                count++;
+                j++;
             }
             else{
-                maxi = max(maxi,length);
-                if(j == nums.size()-1){
-                    j = 0;
+                ans = min(ans,zero);
+                if(nums[i] == 0){
+                    zero--;
                 }
-                else{
-                    j++;
+                i++;
+                if(nums[j] == 0){
+                    zero++;
                 }
-                i = j;
-                length = 0;
+                j++;
             }
         }
-        return tot1 - maxi;
+        return ans;
     }
 };
