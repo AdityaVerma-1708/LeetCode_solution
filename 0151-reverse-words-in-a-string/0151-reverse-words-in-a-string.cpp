@@ -30,31 +30,57 @@ public:
         // return ans;
 
     //approach 2: using stack
-        stack<string> stack;
-        for(int i = 0;i<s.size();i++){
-            if(s[i] == ' '){
-                while(s[i] == ' ' && i < s.size()){
-                    i++;
-                }
-                i--;
-            }
-            else{
-                string words="";
-                while(s[i] != ' ' && i < s.size()){
-                    words = words + s[i];
-                    i++;
-                }
-                stack.push(words);
-                stack.push(" ");
-            }
-        }
+        // stack<string> stack;
+        // for(int i = 0;i<s.size();i++){
+        //     if(s[i] == ' '){
+        //         while(s[i] == ' ' && i < s.size()){
+        //             i++;
+        //         }
+        //         i--;
+        //     }
+        //     else{
+        //         string words="";
+        //         while(s[i] != ' ' && i < s.size()){
+        //             words = words + s[i];
+        //             i++;
+        //         }
+        //         stack.push(words);
+        //         stack.push(" ");
+        //     }
+        // }
 
+        // string ans = "";
+        // stack.pop();
+        // while(stack.empty() == 0){
+        //     ans = ans + stack.top();
+        //     stack.pop();
+        // }
+        // return ans;
+
+
+    //without space: 
+        int i = 0;
         string ans = "";
-        stack.pop();
-        while(stack.empty() == 0){
-            ans = ans + stack.top();
-            stack.pop();
+        while(i < s.size()){
+            string temp = "";
+            while(s[i] != ' ' && i < s.size()){
+                temp = temp + s[i];
+                i++;
+            }
+
+            while(s[i] == ' ' && i < s.size()){
+                i++;
+            }
+
+            if(!temp.empty()){
+                if(ans.empty()){
+                    ans = ans + temp;
+                }
+                else{
+                    ans = temp + ' ' + ans;
+                }
+            }
         }
-        return ans;  
+        return ans;        
     }
 };
