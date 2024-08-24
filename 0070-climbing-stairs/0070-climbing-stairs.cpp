@@ -29,21 +29,33 @@ public:
     
 
 
-//appraoch 2:   using memoization  
+//appraoch 2:   using memoization dp
 
-    int solve(vector<int>& dp,int n){
-        if(n <= 2){
-            return dp[n] = n;
-        }
-        if(dp[n] != -1){
-            return dp[n];
-        }
+    // int solve(vector<int>& dp,int n){
+    //     if(n <= 2){
+    //         return dp[n] = n;
+    //     }
+    //     if(dp[n] != -1){
+    //         return dp[n];
+    //     }
 
-        return dp[n] = solve(dp,n-1) + solve(dp,n-2);
-    }
+    //     return dp[n] = solve(dp,n-1) + solve(dp,n-2);
+    // }
 
+    // int climbStairs(int n){
+    //     vector<int>dp(n+1,-1);
+    //     return solve(dp,n);
+    // }
+
+//approach 3: using tabular dp 
     int climbStairs(int n){
-        vector<int>dp(n+1,-1);
-        return solve(dp,n);
-    }    
+        vector<int> dp(n+1,-1);
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 2;
+        for(int i = 3;i<=n;i++){
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+        return dp[n];
+    }       
 };
