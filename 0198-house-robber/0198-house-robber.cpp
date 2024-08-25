@@ -81,6 +81,9 @@ public:
 //appraoch 4: bottom up DP (tabular)    
 
     int rob(vector<int>& nums) {
+        if(nums.size() == 1){
+            return nums[0];
+        }
         vector<int> dp(nums.size()+1,-1);
         dp[0] = nums[0];
         dp[1] = nums[1];
@@ -98,5 +101,6 @@ public:
             ans = max(ans,dp[i]);
         }
         return ans;
+        return dp[nums.size()-1];
     }
 };
