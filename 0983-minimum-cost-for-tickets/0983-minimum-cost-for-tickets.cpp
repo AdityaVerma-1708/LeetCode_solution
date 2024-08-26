@@ -61,7 +61,7 @@ public:
     }
 
     int mincostTickets(vector<int>& days, vector<int>& costs) {
-        vector<int> dp(366,-1);
+        vector<int> dp(days.back()+1,-1);
         return solve(days,costs,days[0],dp);
     }
 };
