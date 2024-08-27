@@ -51,10 +51,19 @@ public:
     }
 
     int coinChange(vector<int>& coins, int amount) {
-        vector<int> dp(10001,-1);
+        vector<int> dp(amount+1,-1);
         if(solve(coins,amount,dp) == INT_MAX){
             return -1;
         }
         return solve(coins,amount,dp);
     }
+
+//appraoch 3: dp with tabulation bottom up approach 
+
+    // int coinChange(vector<int>& coins,int amount){
+    //     vector<int> dp(amount+1,-1);
+    //     dp[0] = 0;
+    //     for(int i = 0;i<)   
+    // }
+
 };
