@@ -80,32 +80,46 @@ public:
 
 //appraoch 3: dp woth memoization top down
 
-    int solve(vector<vector<int>>& mat,int m,int n,vector<vector<int>>&dp){
-        if(m == 0 && n == 0){
-            return 1;
-        }
+    // int solve(vector<vector<int>>& mat,int m,int n,vector<vector<int>>&dp){
+    //     if(m == 0 && n == 0){
+    //         return 1;
+    //     }
 
-        if(dp[m][n] != -1){
-            return dp[m][n];
-        }
+    //     if(dp[m][n] != -1){
+    //         return dp[m][n];
+    //     }
 
-        if(mat[m][n] == 1){
-            return dp[m][n] = 0;
-        }
+    //     if(mat[m][n] == 1){
+    //         return dp[m][n] = 0;
+    //     }
 
-        int count = 0;
-        //go left
-        if(n-1 >= 0){
-            count = count + solve(mat,m,n-1,dp);
-        }
+    //     int count = 0;
+    //     //go left
+    //     if(n-1 >= 0){
+    //         count = count + solve(mat,m,n-1,dp);
+    //     }
 
-        //go down
-        if(m-1 >= 0){
-            count = count + solve(mat,m-1,n,dp);
-        }
+    //     //go down
+    //     if(m-1 >= 0){
+    //         count = count + solve(mat,m-1,n,dp);
+    //     }
 
-        return dp[m][n] = count;
-    }
+    //     return dp[m][n] = count;
+    // }
+
+    // int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+    //     int m = obstacleGrid.size();
+    //     int n = obstacleGrid[0].size();
+        
+    //     if(obstacleGrid[m-1][n-1] == 1 || obstacleGrid[0][0] == 1){
+    //         return 0;
+    //     }
+
+    //     vector<vector<int>>dp(m,vector<int>(n,-1));
+    //     return solve(obstacleGrid,m-1,n-1,dp);
+    // }
+
+//appraoch 4: tabular dp : bottom up
 
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
         int m = obstacleGrid.size();
@@ -114,8 +128,33 @@ public:
         if(obstacleGrid[m-1][n-1] == 1 || obstacleGrid[0][0] == 1){
             return 0;
         }
-
         vector<vector<int>>dp(m,vector<int>(n,-1));
-        return solve(obstacleGrid,m-1,n-1,dp);
-    }
+        for(int i = 0;i<m;i++){
+            for(int j = 0;j<n;j++){
+                if(i == 0 && j == 0){
+                    dp[i][j] = 1;
+                }
+                else{
+                    if(obstacleGrid[i][j] == 1){
+                        dp[i][j] = 0;
+                    }
+                    else{
+                        int count = 0;
+                        //up;
+                        if(i-1 >= 0){
+                            count = count + dp[i-1][j]; 
+                        }
+
+                        //left
+                        if(j-1 >= 0){
+                            count = count + dp[i][j-1];
+                        }
+
+                        dp[i][j] = count;
+                    }
+                }
+            }
+        }
+        return dp[m-1][n-1];
+    }    
 };
