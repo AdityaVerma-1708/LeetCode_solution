@@ -53,10 +53,11 @@ public:
 
     int minimumTotal(vector<vector<int>>& triangle) {
         int m = triangle.size();
+        int n = triangle[m-1].size();
         if(m == 1){
             return triangle[0][0];
         }
-        vector<vector<int>> dp(m,vector<int>(m,-1));
+        vector<vector<int>> dp(m,vector<int>(n,-1));
         return solve(triangle,0,0,m,dp);
     }
 };
