@@ -12,20 +12,49 @@
 class Solution {
 public:
 
-    void inorder(TreeNode* root,vector<int>& ans){
+//approach 1: using recurrsion
+
+    // void inorder(TreeNode* root,vector<int>& ans){
+    //     if(root == nullptr){
+    //         return;
+    //     }
+
+    //     inorder(root->left,ans);
+    //     ans.push_back(root->val);
+    //     inorder(root->right,ans);
+
+    // }
+
+    // vector<int> inorderTraversal(TreeNode* root) {
+    //     vector<int> ans;
+    //     inorder(root,ans);
+    //     return ans;
+    // }
+
+//approach 2: using iterative approach 
+    vector<int> inorderTraversal(TreeNode* root){
+        vector<int>ans;
+        stack<TreeNode*> st;
         if(root == nullptr){
-            return;
+            return ans;
+        }
+        TreeNode* node = root;
+        while(true){
+            if(node !=  nullptr){
+                st.push(node);
+                node = node->left;
+            }
+            else {
+                if(st.empty() ){
+                    break;
+                }
+                node = st.top();
+                st.pop();
+                ans.push_back(node->val);
+                node = node->right;
+            }
         }
 
-        inorder(root->left,ans);
-        ans.push_back(root->val);
-        inorder(root->right,ans);
-
-    }
-
-    vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> ans;
-        inorder(root,ans);
         return ans;
-    }
+    }    
 };
