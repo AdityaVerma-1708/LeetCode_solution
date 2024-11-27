@@ -45,11 +45,11 @@ public:
             int right = 0;
 
             if(root->left !=  nullptr){
-                left = findsize(root->left,0);
+                left = findsize(root->left,1);
             }
 
             if(root->right != nullptr){
-                right = findsize(root->right,0);
+                right = findsize(root->right,1);
             }
 
             if(abs(left-right) > 1){
